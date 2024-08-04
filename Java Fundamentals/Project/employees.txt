@@ -1,0 +1,4 @@
+employee_id,first_name,last_name,job_title,department,hire_date,salary
+1,'John','Doe','Software Engineer','IT','2022-01-01',80000
+2,'Jane','Smith','Marketing Specialist','Marketing','2022-02-15',70000
+3,'Mike','Johnson','Financial Analyst','Finance','2022-03-30',75000
