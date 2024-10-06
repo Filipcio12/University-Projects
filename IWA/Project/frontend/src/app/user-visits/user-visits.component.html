@@ -1,0 +1,61 @@
+<h3>Appointments</h3>
+<div class="appointment-search">
+  <mat-form-field appearance="fill">
+    <mat-label>Search appointments</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  </mat-form-field>
+
+  <button *ngIf="authority === 'doctor' || authority === 'admin'" mat-raised-button color="primary" [routerLink]="['/user-panel/visit-detail/new']">
+    New Visit
+  </button>
+
+</div>
+
+<div class="appointment-table">
+    <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  
+      <!-- Column Definitions -->
+      <ng-container matColumnDef="doctor">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="doctorName"> Doctor </mat-header-cell>
+        <mat-cell *matCellDef="let visit"> {{visit.doctorName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="patient">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="patientName"> Patient </mat-header-cell>
+        <mat-cell *matCellDef="let visit"> {{visit.patientName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="prescription">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="medication"> Prescription </mat-header-cell>
+        <mat-cell *matCellDef="let visit"> {{visit.medication}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="date"> Date </mat-header-cell>
+        <mat-cell *matCellDef="let visit"> {{visit.date | date}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="time">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="time"> Time </mat-header-cell>
+        <mat-cell *matCellDef="let visit"> {{visit.time}} </mat-cell>
+      </ng-container>      
+  
+      <ng-container matColumnDef="notes">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="notes"> Notes </mat-header-cell>
+        <mat-cell *matCellDef="let visit"> {{visit.notes}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="isCanceled">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="Availability"> Availability </mat-header-cell>
+        <mat-cell *matCellDef="let visit" [matTooltip]="getAvailabilityTooltip(visit)">
+          <mat-icon class="icon">{{ checkAvailability(visit) }}</mat-icon>
+        </mat-cell>
+      </ng-container>
+      
+  
+      <!-- Row Definitions -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></mat-row>
+  
+    </mat-table>
+  </div>

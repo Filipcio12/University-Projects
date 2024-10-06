@@ -1,0 +1,52 @@
+<h2>Students</h2>
+<div>
+  <label>Student firstname:
+    <input #studentFirstName />
+  </label>
+  <br>
+  <label>Student lastname:
+    <input #studentLastName />
+  </label>
+  <br>
+  <label>Student email:
+    <input #studentEmail />
+  </label>
+  <br>
+  <label>Student telephone:
+    <input #studentTelephone />
+  </label>
+  <br>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(studentFirstName.value, studentLastName.value, studentEmail.value, studentTelephone.value);
+                  studentFirstName.value=''; studentLastName.value=''; studentEmail.value=''; studentTelephone.value=''">
+    add
+  </button>
+
+  <button (click)="addToPut(studentFirstName.value, studentLastName.value, studentEmail.value, studentTelephone.value);
+                  studentFirstName.value=''; studentLastName.value=''; studentEmail.value=''; studentTelephone.value=''">
+    addToPut                
+  </button>
+</div>
+<ul>
+  <li *ngFor="let student of studentList">
+    <span class="badge">{{student.id}}</span> {{ student.firstname }} {{ student.lastname }} {{ student.email }} {{ student.telephone }}
+    <button title="delete" (click)="delete(student)">delete</button>
+    <button title="update" (click)="update(studentFirstName.value,studentLastName.value, studentEmail.value, studentTelephone.value, student);
+                            studentFirstName.value=''; studentLastName.value=''; studentEmail.value=''; studentTelephone.value='';">
+      Update
+    </button>
+    <button title="patch" (click)="patch(studentFirstName.value, studentLastName.value, studentEmail.value, studentTelephone.value, student);
+                                 studentFirstName.value=''; studentLastName.value=''; studentEmail.value=''; studentTelephone.value='';">
+      Patch
+    </button>
+  </li>
+</ul>
+<button title="delete all" (click)="deleteAll()">delete all</button>
+
+<ul>
+  <li *ngFor="let student of studentToPutList">
+    <span class="badge">{{student.id}}</span> {{ student.firstname }} {{ student.lastname }} {{ student.email }} {{ student.telephone }}
+  </li>
+  <button title="put all" (click)="putAll()">put all</button>
+</ul>
+

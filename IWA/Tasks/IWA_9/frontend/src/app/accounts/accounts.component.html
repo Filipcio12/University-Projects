@@ -1,0 +1,21 @@
+<h2>Accounts</h2>
+<div>
+  <label>Account name:
+    <input #accountName />
+  </label>
+  <br>
+  <button (click)="add(accountName.value); accountName.value='';">
+    add
+  </button>
+</div>
+<ul>
+  <li *ngFor="let account of accountList">
+    <span class="badge">{{account.id}}</span> {{ account.accountName }}
+    <button title="delete" (click)="delete(account)">delete</button>
+    <button title="update" (click)="update(accountName.value, account); accountName.value='';">
+      Update
+    </button>
+  </li>
+</ul>
+<button title="delete all" (click)="deleteAll()">delete all</button>
+

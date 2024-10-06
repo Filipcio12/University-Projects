@@ -1,0 +1,85 @@
+:host {
+    display: block;
+    min-height: 100vh; /* Full viewport height */
+    width: 100%; /* Full width */
+    position: relative; /* If you are using absolute positioning inside */
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('/assets/stethoscope.jpg'); /* Optional background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* Add this to home.component.css */
+.text-overlay {
+    position: absolute;
+    top: 40%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Align center of the element with the center of the component */
+    color: white; /* Choose a text color that stands out */
+    text-align: center; /* Center the text inside the div */
+    width: 100%; /* Full width to center text properly */
+}
+
+.text-overlay .btn {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.text-overlay .btn:hover {
+    background-color: #0056b3;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;/* Semi-transparent background */
+    color: White; /* Ensures text is visible against a potentially dark background */
+    width: 100%; /* Ensures the header covers the full width of the viewport */
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navigation .btn {
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+
+.navigation .btn:hover {
+    background-color: #0056b3;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+.header {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-overlay {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+

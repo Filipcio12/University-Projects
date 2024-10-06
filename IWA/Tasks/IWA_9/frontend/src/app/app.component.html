@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+<nav>
+  <a routerLink="/home">Home</a>
+  <a routerLink="/user" *ngIf="authority === 'user' || authority === 'admin'">User Page</a>
+  <a routerLink="/admin" *ngIf="authority === 'admin'">Admin Page</a>
+  <a routerLink="/auth/login" *ngIf="!authority">Login</a>
+  <a routerLink="/students">Students</a>
+  <a routerLink="/accounts">Accounts</a>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
+<router-outlet></router-outlet>
+<app-messages></app-messages>

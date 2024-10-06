@@ -1,0 +1,27 @@
+.text-overlay {
+    position: absolute;
+    top: 40%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Align center of the element with the center of the component */
+    color: white; /* Choose a text color that stands out */
+    text-align: center; /* Center the text inside the div */
+    width: 100%; /* Full width to center text properly */
+}
+
+.text-overlay .btn {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.text-overlay .btn:hover {
+    background-color: #0056b3;
+}
+
+.text-overlay {
+    font-family: Arial, Helvetica, sans-serif;
+}

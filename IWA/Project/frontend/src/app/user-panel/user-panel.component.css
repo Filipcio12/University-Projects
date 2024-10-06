@@ -1,0 +1,98 @@
+:host {
+    background-color: white;
+}
+
+/* General styles for the sidenav container to ensure full height and clean layout */
+.mat-sidenav-container {
+    height: 100vh; /* This makes the sidenav container take the full height of the viewport */
+    display: flex;
+    flex-direction: row;
+    overflow: hidden; /* Prevents any overflow from the container */
+}
+
+/* Styling for the sidenav to ensure it covers the full height and has a visually distinct look */
+.mat-sidenav {
+    width: 250px; /* Adjust width as needed */
+    background-color: #ffffff; /* Light background for the sidenav */
+    color: #333; /* Dark text color for good contrast */
+    border-right: 1px solid #e0e0e0; /* Adds a subtle border to the right of the sidenav */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distributes space between elements */
+    align-items: flex-start; /* Align content to the left */
+    padding: 20px 10px; /* Padding around the entire sidenav for consistency */
+}
+
+/* Styling for content inside the sidenav for better spacing and readability */
+.mat-sidenav div {
+    width: 100%; /* Full width to better control padding and alignment */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Evenly distribute space within each section */
+}
+
+/* Additional styling to separate user info from navigation */
+.mat-sidenav div:first-child {
+    border-bottom: 1px solid #e0e0e0; /* Thin grey line as a separator */
+    padding-bottom: 20px; /* Extra padding at the bottom */
+    margin-bottom: 20px; /* Extra margin at the bottom */
+}
+
+/* Patient name styling */
+.patient_name {
+    text-align: center;
+    font-size: 1.25em; /* Larger font size for patient name */
+    color: black; /* Black color for emphasis */
+    margin-bottom: 0.5em; /* Space between the patient name and username */
+}
+
+/* Username styling */
+.user_name {
+    text-align: center;
+    font-size: 0.85em; /* Smaller font size for username */
+    color: grey; /* Grey color for less emphasis */
+}
+
+/* Button styling inside the sidenav */
+button {
+    padding: 8px 16px;
+    background-color: #007bff; /* Blue background for buttons */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 90%; /* Wider button */
+    margin-left: 10px; /* Align left with a little space */
+    margin-top: auto; /* Pushes the button to the bottom if space allows */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Navigation links styling */
+nav p {
+    display: flex;
+    align-items: center; /* Align text and icons vertically */
+    margin: 10px 0;
+    padding: 8px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    width: 100%; /* Full width for better hover effect */
+    justify-content: flex-start; /* Align text and icons to the left */
+}
+
+nav p mat-icon {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+nav p:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+}
+
+/* Styling for the main content area */
+.mat-sidenav-content {
+    padding: 20px; /* Spacing around the content */
+    flex-grow: 1; /* Allows the content area to take up the remaining space */
+}

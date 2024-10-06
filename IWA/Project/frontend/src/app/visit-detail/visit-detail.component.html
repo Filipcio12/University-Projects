@@ -1,0 +1,126 @@
+<!-- Main card for visit details -->
+
+
+<div *ngIf="authority === 'doctor' || authority === 'admin'; else patientinfo">
+  <!-- Main card for visit details -->
+<!-- Main card for visit details -->
+<mat-card class="visit-detail-card">
+  <mat-card-header>
+    <mat-card-title>Appointment Details</mat-card-title>
+  </mat-card-header>
+  <mat-card-content [formGroup]="visitForm">
+    <!-- Doctor selection -->
+    <mat-form-field>
+      <mat-label>Doctor</mat-label>
+      <mat-select formControlName="doctor">
+        <mat-option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.firstName }} {{doctor.lastName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Patient selection -->
+    <mat-form-field>
+      <mat-label>Patient</mat-label>
+      <mat-select formControlName="patient">
+        <mat-option *ngFor="let patient of patients" [value]="patient.id">{{ patient.firstName }} {{patient.lastName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Existing fields for date, time, and notes -->
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="datePicker" formControlName="visitDate">
+      <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Time</mat-label>
+      <mat-select formControlName="time">
+        <mat-option *ngFor="let time of times" [value]="time">{{ time }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Notes</mat-label>
+      <textarea matInput formControlName="notes"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cancel Visit</mat-label>
+      <mat-select formControlName="isCanceled">
+        <mat-option value="no">No</mat-option>
+        <mat-option value="yes">Yes</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+  </mat-card-content>
+</mat-card>
+
+<!-- Cards for each prescription -->
+<div *ngIf="prescriptionForm">
+  <div class="prescription-cards" [formGroup]="prescriptionForm">
+    <mat-card class="prescription-card">
+      <mat-card-header>
+        <mat-card-title>
+          Prescription
+        </mat-card-title>
+        <br><br>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field>
+          <mat-label>Medication</mat-label>
+          <input matInput formControlName="medication">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+<div *ngIf="!isEdit; else submit">
+  <button mat-button (click)="save()">Save Changes</button>
+</div>
+
+<ng-template #submit>
+  <button mat-button (click)="onSubmit()">Submit Visit</button>
+</ng-template>
+
+</div>
+
+<ng-template #patientinfo *ngIf="isEdit">
+  <mat-card class="visit-detail-card">
+      <mat-card-header>
+        <mat-card-title>Appointment Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Doctor:</strong> {{ visit?.doctor?.firstName }} {{ visit?.doctor?.lastName }}</p>
+        <p><strong>Patient:</strong> {{ visit?.patient?.firstName }} {{ visit?.patient?.lastName }}</p>
+        <p><strong>Date:</strong> {{ visit?.visitDate | date:'fullDate' }}</p>
+        <p><strong>Time:</strong> {{ visit?.visitDate | date:'shortTime' }}</p>
+        <p><strong>Notes:</strong> {{ visit?.notes }}</p>
+      </mat-card-content>
+    </mat-card>
+    
+    <!-- Cards for each prescription -->
+    <div *ngIf="visit?.prescription">
+      <div class="prescription-cards">
+        <mat-card class="prescription-card">
+          <mat-card-header>
+            <mat-card-title>Prescription</mat-card-title>
+            <mat-card-subtitle>{{ visit?.prescription?.medication }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{visit?.prescription?.description}}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  
+    <div *ngIf="isUpcomingAndActive()">
+      <button mat-button (click)="cancel()">Cancel Visit</button>
+    </div>
+  
+  </ng-template>
+  

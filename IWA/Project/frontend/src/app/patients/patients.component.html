@@ -1,0 +1,38 @@
+<h3>Patients</h3>
+<div class="appointment-search">
+  <mat-form-field appearance="fill">
+    <mat-label>Search patients</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  </mat-form-field>
+
+  <!-- <button *ngIf="authority === 'admin' || authority === 'doctor'" mat-raised-button color="primary" [routerLink]="['/user-panel/patient-detail/new']">
+    New Patient
+  </button> -->
+
+</div>
+
+<div class="appointment-table">
+    <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  
+      <!-- Column Definitions -->
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="firstName"> First name </mat-header-cell>
+        <mat-cell *matCellDef="let patient"> {{patient.firstName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="lastName"> Last name </mat-header-cell>
+        <mat-cell *matCellDef="let patient"> {{patient.lastName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="medicalHistory">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="medicalHistory"> Medical history</mat-header-cell>
+        <mat-cell *matCellDef="let patient"> {{patient.medicalHistory}} </mat-cell>
+      </ng-container>
+      
+      <!-- Row Definitions -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></mat-row>
+  
+    </mat-table>
+  </div>

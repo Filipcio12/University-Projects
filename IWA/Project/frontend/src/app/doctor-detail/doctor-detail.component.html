@@ -1,0 +1,27 @@
+<mat-card class="visit-detail-card">
+    <mat-card-header>
+      <mat-card-title>Doctor Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content [formGroup]="doctorForm">
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <textarea matInput formControlName="firstName"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Last name</mat-label>
+        <textarea matInput formControlName="lastName"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Specialization</mat-label>
+        <textarea matInput formControlName="specialization"></textarea>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <div *ngIf="!isEdit; else submit">
+    <button mat-button (click)="save()">Save Changes</button>
+  </div>
+  
+  <ng-template #submit>
+    <button mat-button (click)="onSubmit()">Submit Doctor</button>
+  </ng-template>

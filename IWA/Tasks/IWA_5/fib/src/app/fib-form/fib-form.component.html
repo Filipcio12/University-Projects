@@ -1,0 +1,22 @@
+<form class="ui large form segment">
+    <h3 class="ui header">Find nth Fibonacci number:</h3>
+    <div class="field">
+        <label for="title">n:</label>
+        <input name="index" #index>
+    </div>
+
+    <button (click)="calcFib(index)"
+            class="ui positive right floated button">
+        Calculate
+    </button>
+    <div *ngIf="fib.index < 0">
+        Index cannot be negative.
+    </div>
+    <div *ngIf="fib.index >= 0 && fib.index < 351">
+        {{fib.value}}
+    </div>
+    <div *ngIf="fib.index > 350">
+        Overflow.
+    </div>
+</form>
+    

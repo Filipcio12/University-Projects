@@ -1,0 +1,24 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened="true">
+      <div>
+        <p *ngIf="authority === 'admin'; else notAdmin" class="patient_name">Admin</p>
+        <ng-template #notAdmin>
+          <p class="patient_name">{{user?.firstName}} {{user?.lastName}}</p>
+        </ng-template>
+        <p class="user_name">{{username}}</p>
+        <button (click)="logout()">Logout</button>
+      </div>
+      <div>
+        <nav>
+          <p routerLink="../user-panel"><mat-icon>home</mat-icon>Home</p>
+          <p routerLink="visits"><mat-icon>calendar_month</mat-icon>Appointments</p>
+          <p routerLink="doctors"><mat-icon>medical_services</mat-icon>Doctors</p>
+          <p *ngIf="authority === 'doctor' || authority === 'admin'" routerLink="patients"><mat-icon>accessible</mat-icon>Patients</p>
+          <p *ngIf="authority === 'user' || authority === 'doctor'" routerLink="profile"><mat-icon>person</mat-icon>Profile</p>
+        </nav>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

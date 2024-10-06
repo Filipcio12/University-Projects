@@ -1,0 +1,36 @@
+.visit-detail-card {
+    margin: auto;
+    margin-top: 20px;
+    padding: 15px;
+    border-left: 5px solid deepskyblue; /* Blue vertical bar on the left */
+    background-color: #f4f8ff; /* Light blue background */
+}
+
+.prescription-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.prescription-card {
+    flex: 1 1 260px; /* Ensure cards have a min-width of 260px and grow */
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid lightblue; /* Blue border */
+    background-color: #e6f0ff; /* Very light blue background */
+}
+
+.mat-card-title, .mat-card-subtitle {
+    color: #0056b3; /* Darker blue for text for contrast */
+}
+
+button.mat-button {
+    color: white;
+    background-color: #007bff; /* Bootstrap primary blue */
+    margin-right: 5px;
+}
+
+button.mat-button:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}

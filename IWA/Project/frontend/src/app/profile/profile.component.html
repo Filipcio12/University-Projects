@@ -1,0 +1,25 @@
+<div *ngIf="authority === 'doctor'; else user">
+<mat-card class="visit-detail-card">
+<mat-card-header>
+    <mat-card-title>Profile</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>First name:</strong> {{doctor?.firstName}} </p>
+    <p><strong>Last name:</strong> {{doctor?.lastName}} </p>
+    <p><strong>Specialization:</strong> {{doctor?.specialization}} </p>
+  </mat-card-content>
+</mat-card>
+</div>
+
+<ng-template #user>
+<mat-card class="visit-detail-card">
+    <mat-card-header>
+        <mat-card-title>Profile</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>First name:</strong> {{patient?.firstName}} </p>
+        <p><strong>Last name:</strong> {{patient?.lastName}} </p>
+        <p><strong>Specialization:</strong> {{patient?.medicalHistory}} </p>
+      </mat-card-content>
+</mat-card>
+</ng-template>
